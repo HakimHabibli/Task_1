@@ -11,7 +11,8 @@ import java.util.List;
 public class MockDataService {
 
 
-    public List<IncomeRecord> getIncomes(String fin) {
+    public List<IncomeRecord> getIncomes(String fin)
+    {
         return switch (fin) {
             case "GOOD001" -> List.of(
                     new IncomeRecord("PASHA Bank", new BigDecimal("3500")),
