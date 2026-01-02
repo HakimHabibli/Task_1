@@ -27,7 +27,7 @@ public class MockDataService {
         };
     }
 
-    // Kredit tarixçəsini simulyasiya edən List
+
     public List<LoanRecord> getLoans(String fin) {
         return switch (fin) {
             case "GOOD001" -> List.of(

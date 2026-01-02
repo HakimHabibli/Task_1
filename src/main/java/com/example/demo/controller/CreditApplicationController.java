@@ -14,6 +14,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/credit")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173")
 public class CreditApplicationController
 {
         private final LoanProcessingService loanService;
@@ -24,13 +25,13 @@ public class CreditApplicationController
                                        @RequestParam BigDecimal amount,
                                        @RequestParam int term) {
 
-            // 1. Hesablama məntiqini çağırırıq
+
             CreditApplication application = loanService.calculateLoan(customer, amount, term);
 
-            // 2. Unikal ID veririk (Baza olmadığı üçün UUID istifadə edirik)
+
             application.setApplicationId(UUID.randomUUID().toString().substring(0, 8));
 
-            // 3. Yaddaşda saxlayırıq
+
             storage.save(application);
 
             return application;
